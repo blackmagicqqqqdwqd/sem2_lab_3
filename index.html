@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="utf-8">
+  <title> Трансформация и анимация</title>
+  <link rel="stylesheet" href="CSS/style.css">
+  <script src="http://d3js.org/d3.v7.min.js"> </script>
+  <script src="JavaScript/main.js"></script>
+  <script src="JavaScript/image.js"></script>
+  <script src="JavaScript/path.js"></script>
+</head>
+
+<body>
+  <form id="setting">
+    <p><b>Координаты рисунка</b><br>
+      <label for="cx">x: </label>
+      <input type="number" id="cx" value="300" max="600" min="0">
+      <span class="inVisible" id="cx2">
+        <label for="cx_finish"> до </label>
+        <input type="number" id="cx_finish" value="550" max="600" min="0">
+      </span>
+      <br>
+      <label for="cy">y: </label>
+      <input type="number" id="cy" value="300" max="600" min="0">
+      <span class="inVisible" id="cy2">
+        <label for="cy_finish"> до </label>
+        <input type="number" id="cy_finish" value="550" max="600" min="0">
+      </span>
+    </p>
+    <p class="inVisible" id="alongType"><b>Пути Перемещения</b><br>
+      <select id="typeMoveAlong">
+        <option value="0" checked="checked">Буквой «Г»</option>
+        <option value="1">По кругу</option>
+      </select>
+    </p>
+    <p id="Scale"><b>Масштаб</b><br>
+      <label for="scaleX">по x:</label>
+      <input type="number" min="-10" max="10" id="scaleX" value="1">
+      <span class="inVisible" id="scaleX2">
+        <label for="scaleX_finish"> до </label>
+        <input type="number" min="-10" max="10" id="scaleX_finish" value="1.5">
+      </span>
+      <br>
+      <label for="scaleY">по y:</label>
+      <input type="number" min="-10" max="10" id="scaleY" value="1">
+      <span class="inVisible" id="scaleY2">
+        <label for="scaleY_finish"> до </label>
+        <input type="number" min="-10" max="10" id="scaleY_finish" value="1.5">
+      </span>
+    </p>
+    <p id="Rotate"><b>Поворот</b><br>
+      <label for="rotate">угол:</label>
+      <input type="number" id="rotate" min="0" max="360" value="0">
+      <span class="inVisible" id="rotate2">
+        <label for="rotate_finish" id="rotate_finish"> до </label>
+        <input type="number" id="rotate_finish" min="0" max="360" value="180">
+      </span>
+    </p>
+    <br><br>
+    <input type="button" id="buttonDraw" value="Нарисовать" onclick="draw(document.getElementById('setting'))">
+    <input type="button" value="Очистить" onclick="clear2()">
+    <br>
+    <label for="animation2">Включить анимация?</label>
+    <input type="checkbox" id="animation2" onchange="includeAnimation()" style="float:left">
+    <select id="typeAnimation" class="inVisible">
+      <option value="linear" checked="checked">linear</option>
+      <option value="elastic">elastic</option>
+      <option value="bounce">bounce</option>
+    </select>
+    <br>
+    <span class="inVisible" id="alongOption">
+      <label for="alongPath">Перемещение вдоль пути?</label>
+      <input type="checkbox" id="alongPath" onchange="includeAnimationType()">
+    </span>
+    <br>
+    <input type="button" class="inVisible" id="buttonAnimation" value="Анимировать"
+      onclick="runAnimation(document.getElementById('setting'))">
+  </form>
+  <svg></svg>
+
+</body>
+
+</html>
